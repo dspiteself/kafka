@@ -168,7 +168,7 @@ public class Worker {
         WorkerConfig config,
         OffsetBackingStore globalOffsetBackingStore,
         ConnectorClientConfigOverridePolicy connectorClientConfigOverridePolicy) {
-        this(workerId, time, plugins, config, globalOffsetBackingStore, Executors.newCachedThreadPool(), connectorClientConfigOverridePolicy, Admin::create);
+        this(workerId, time, plugins, config, globalOffsetBackingStore, Executors.newVirtualThreadPerTaskExecutor(), connectorClientConfigOverridePolicy, Admin::create);
     }
 
     Worker(
